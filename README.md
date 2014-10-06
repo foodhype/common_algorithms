@@ -1,4 +1,4 @@
 common_algorithms
 =================
 
-Collection of algorithms (and data structures) I've implemented over time.
+Collection of algorithms and data structures that I've implemented over time.
