@@ -1,5 +1,6 @@
 #TODO: handle negative numbers
 def multiply(x, y):
+  """Perform long multiplication of strings representing integers."""
   sums = []
   product = "0"
   carry = 0
@@ -21,6 +22,7 @@ def multiply(x, y):
 
 # TODO: handle negative numbers
 def add(x, y):
+  """Perform long addition of strings representing integers."""
   max_length = max(len(x), len(y))
   x = x.zfill(max_length)
   y = y.zfill(max_length)

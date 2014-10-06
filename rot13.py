@@ -1,4 +1,5 @@
 def rot13(original):
+  """Encode a string into ROT13."""
   translated = []
   for character in original:
     shifted = ord(character)

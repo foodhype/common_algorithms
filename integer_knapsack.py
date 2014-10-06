@@ -1,4 +1,6 @@
 def integer_knapsack(values, weights, capacity):
+    """Find the maximum value that can be fit in knapsack with finite capacity
+    where each value has an associated weight."""
     dp = [[0 for _ in xrange(capacity + 1)] for _ in xrange(len(values) + 1)]
 
     for i in xrange(len(values) + 1):

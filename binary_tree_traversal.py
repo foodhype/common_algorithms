@@ -1,4 +1,5 @@
 def inorder_traversal(root):
+    """Generate values in binary tree in-order."""
     if root is not None:
         for val in inorder_traversal(root.left):
             yield val
@@ -8,6 +9,7 @@ def inorder_traversal(root):
 
 
 def preorder_traversal(root):
+    """Generate values in binary tree pre-order."""
     if root is not None:
         yield root.val
         for val in preorder_traversal(root.left):
@@ -17,6 +19,7 @@ def preorder_traversal(root):
 
 
 def postorder_traversal(root):
+    """Generate values in binary tree post-order."""
     if root is not None:
         for val in postorder_traversal(root.left):
             yield val

@@ -1,4 +1,5 @@
 def primes(limit):
+    """Generate primes up to limit (sieve of Eratosthenes)."""
     sieve = [True] * limit
     sieve[0] = False
     sieve[1] = False

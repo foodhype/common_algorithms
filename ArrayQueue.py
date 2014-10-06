@@ -1,4 +1,6 @@
 class ArrayQueue(object):
+    """Array implementation of FIFO queue."""
+
     def __init__(self, capacity):
         self.queue = [None for _ in xrange(capacity)]
         self.front = 0

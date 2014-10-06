@@ -1,6 +1,7 @@
 import random
 
 def sample(a, k):
+  """Get k random elements from a with uniform probability."""
   reservoir = [a[i] for i in xrange(k)]
   for i in xrange(k + 1, len(a)):
     random_index = int(i * random.random())

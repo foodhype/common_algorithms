@@ -2,6 +2,7 @@ from LinkedList import SinglyLinkedList
 
 
 def reverse_linked_list(head):
+    """Reverse a linked list (iterative, O(1) space)."""
     prev = None
     current = head
     while current is not None:

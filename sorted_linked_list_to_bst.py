@@ -4,6 +4,7 @@ from binary_tree_traversal import inorder_traversal
 
 
 def sorted_linked_list_to_bst(head):
+    """Convert a sorted linked list to a binary search tree."""
     count = 0
     temp = head
     while temp is not None:

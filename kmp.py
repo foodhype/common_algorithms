@@ -1,4 +1,6 @@
 def kmp(pattern, text):
+    """Return all indexes where pattern occurs in text (Knuth-Morris-Pratt
+    algorithm for O(N) substring search)."""
     shifts = [None] * (len(pattern) + 1)
     shift = 1
     for i in range(len(pattern) + 1):

@@ -4,6 +4,7 @@ class SinglyLinkedList(object):
         self.tail = None
 
     def append(self, val):
+        """Append a node storing val to the tail of the list."""
         node = Node(val)
         if self.head is None:
             self.head = node
