@@ -1,5 +1,5 @@
 def kadanes(a):
-    """maximum contiguous sum"""
+    """Maximum contiguous sum"""
     max_here = 0
     max_sum = 0
     for i in a:

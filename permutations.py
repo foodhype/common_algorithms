@@ -1,5 +1,6 @@
 
 def permutations(elements):
+  """Generate all permutations of elements."""
   if len(elements) <= 1:
     yield elements
   else:

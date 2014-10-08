@@ -12,6 +12,8 @@ def is_safe(board, row, col):
 
 
 def eightqueens(board=None, col=0):
+    """Determine if eight queens can be placed on a board where no queen can
+    attack another queen."""
     if board is None:
         board = [[False for _ in xrange(8)] for _ in xrange(8)]
     if col >= 8:

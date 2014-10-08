@@ -1,6 +1,8 @@
 import heapq
 
 def running_median(arr):
+    """Generate median for each element encountered so far in arr iterating
+    from left to right."""
     max_heap = []
     min_heap = []
     median_upto = []

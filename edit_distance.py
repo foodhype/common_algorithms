@@ -2,6 +2,8 @@ from sys import stdin
 
 
 def edit_distance(a, b):
+  """Return the minimum number of insertions, deletions, replacements to
+  transform a into b."""
   dp = [[0 for _ in xrange(len(b) + 1)] for _ in xrange(len(a) + 1)]
 
   for i in xrange(1, len(a) + 1):

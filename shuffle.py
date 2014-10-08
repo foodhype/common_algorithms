@@ -1,6 +1,7 @@
 import random
 
 def shuffle(a):
+  """Randomly shuffle an array."""
   for i in reversed(xrange(1, len(a))):
     random_index = int(random.random() * i)
     temp = a[i]

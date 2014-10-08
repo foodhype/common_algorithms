@@ -1,4 +1,6 @@
 def coin_change(denominations, total):
+    """Get list of all possible combinations of coins from denominations that
+    sum to total."""
     memo = [0 for _ in xrange(total + 1)]
     coins = [None for _ in xrange(total + 1)]
     memo[0] = 1

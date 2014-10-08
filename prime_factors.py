@@ -1,4 +1,5 @@
 def factors(n):
+  """Generate prime factors of n."""
   result = []
   factor_pairs = ([i, n//i] for i in xrange(
       1, int(n**0.5) + 1) if n % i == 0)
@@ -7,6 +8,7 @@ def factors(n):
   return result
 
 def isprime(n):
+  """Test if n is prime."""
   if n == 2:
     return True
   elif n % 2 == 0:

@@ -2,14 +2,18 @@ import random
 
 
 def getbit(num, index):
+    """Get bit at index."""
     return (num >> index) & 1
 
 
 def msd(arr):
+    """Get most significant bit offset."""
     return max(num.bit_length() for num in arr)
 
 
 def radixsort(arr, algorithm):
+    """Perform radix sort specified by algorithm, where "msd" is MSD radix
+    sort and "lsd" is LSD radix sort."""
     if algorithm == "msd":
         msd_radixsort(arr, 0, len(arr), msd(arr) - 1)
     elif algorithm == "lsd":
@@ -19,6 +23,7 @@ def radixsort(arr, algorithm):
 
 
 def msd_radixsort(arr, lo, hi, bit_index):
+    """In-place most significant digit radix sort."""
     left_bound = lo
     right_bound = hi
     while left_bound < right_bound:
@@ -35,6 +40,7 @@ def msd_radixsort(arr, lo, hi, bit_index):
 
 
 def lsd_radixsort(arr):
+    """Least significant digit radix sort."""
     for bit_index in xrange(msd(arr)):
         arr = [number for number in merge(arr, bit_index)]
 

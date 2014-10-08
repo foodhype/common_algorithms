@@ -2,6 +2,7 @@ from LinkedList import SinglyLinkedList
 
 
 def merge_linked_lists(a, b):
+    """Merge two sorted linked lists (iterative, O(1) space)."""
     head = None
     temp = None
 
@@ -32,6 +33,7 @@ def merge_linked_lists(a, b):
 
 
 def merge_linked_lists_r(a, b):
+    """Merge two sorted linked lists (recursive, O(N) space)."""
     if a is None:
         return b
     if b is None:
