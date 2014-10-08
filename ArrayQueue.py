@@ -1,3 +1,6 @@
+# Note: fails two edge cases: dynamic resizing and capacity bounds checking.
+# Do not use.
+
 class ArrayQueue(object):
     def __init__(self, capacity):
         self.queue = [None for _ in xrange(capacity)]
