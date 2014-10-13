@@ -1,3 +1,6 @@
+# Note: fails two edge cases: dynamic resizing and capacity bounds checking.
+# Do not use.
+
 class ArrayQueue(object):
     """Array implementation of FIFO queue."""
 
