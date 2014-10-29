@@ -17,8 +17,19 @@ def coin_change(denominations, total):
     return coins[total]
 
 
+def coin_change_count(denominations, total):
+    """Count the number of ways the denominations can sum to total."""
+    dp = [0 for _ in xrange(total + 1)]
+    dp[0] = 1
+    for denomination in denominations:
+        for index in xrange(denomination, total + 1):
+            dp[index] += dp[index - denomination]
+
+    return dp[total]
+
 def main():
-    print coin_change([1, 5, 10, 25, 50, 100], 100)
+    print len(coin_change([1, 5, 10, 25, 50, 100], 100))
+    print coin_change_count([1, 5, 10, 25, 50, 100], 100)
 
 
 if __name__ == "__main__":
