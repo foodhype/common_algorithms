@@ -3,8 +3,8 @@ import heapq
 def kway_merge(*iterables):
     input_buffer = []
     iterators = [iter(iterable) for iterable in iterables]
-    for index, iterable in enumerate(iterators):
-        heapq.heappush(input_buffer, (iterable.next(), index))
+    for index, iterator in enumerate(iterators):
+        heapq.heappush(input_buffer, (iterator.next(), index))
 
     while input_buffer:
         value, index = heapq.heappop(input_buffer)
