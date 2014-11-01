@@ -1,5 +1,5 @@
 def longest_substring_unique_chars(s):
-    """Find the longest substring of s containing only unique characters."""
+    """Find the longest substring of s without repeating characters."""
     if len(s) == 0:
         return ""
 
