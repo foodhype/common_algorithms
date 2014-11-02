@@ -34,17 +34,15 @@ def float_pow(base, exp, prec=53):
 def int_pow(base, exp):
     if exp < 0:
         return 1.0 / int_pow(base, -exp)
-    elif exp == 0:
-        return 1
     else:
         temp = 1
-        while exp > 1:
+        while exp:
             if exp & 1:
                 temp *= base
             base *= base
             exp /= 2
-        return temp * base
+        return temp
 
 
-print float_pow(10000, 0.25)
-print 10000**0.25
+print 4554**65.5454
+print float_pow(4554, 65.5454)
