@@ -17,7 +17,7 @@ def longest_palindrome_substring(s):
             left -= 1
             right += 1
 
-        index = right + 1
+        index += 1
 
     index = 0
     while index + 1 < len(s):
@@ -31,7 +31,7 @@ def longest_palindrome_substring(s):
             left -= 1
             right += 1
 
-        index = right + 1
+        index += 1
 
     return s[start:start + max_len]
 
