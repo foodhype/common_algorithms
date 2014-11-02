@@ -5,8 +5,7 @@ def longest_palindrome_substring(s):
     start = 0
     max_len = 1
 
-    index = 1
-    while index < len(s):
+    for index in xrange(1, len(s)):
         left = index - 1
         right = index + 1
 
@@ -17,12 +16,8 @@ def longest_palindrome_substring(s):
             left -= 1
             right += 1
 
-        index += 1
-
-    index = 0
-    while index + 1 < len(s):
-        left = index
-        right = index + 1
+        left = index - 1
+        right = index
 
         while left >= 0 and right < len(s) and s[left] == s[right]:
             if right - left + 1 > max_len:
@@ -30,8 +25,6 @@ def longest_palindrome_substring(s):
                 max_len = right - left + 1
             left -= 1
             right += 1
-
-        index += 1
 
     return s[start:start + max_len]
 
