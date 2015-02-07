@@ -16,4 +16,4 @@ def main():
     print sample(li, 3)
 
 if __name__ == "__main__":
-  main()
+    main()
