@@ -6,26 +6,60 @@ class lru_cache:
         self.head = None
         self.tail = None
 
-    def __push(self, key, value):
+    def __getitem__(self, key):
+        """Get value associated with key if the key exists in the cache."""
+        if key in self.node_map.keys():
+            if key == self.head.key:
+                return self.head.value
+            node = self.node_map[key]
+
+            # Delete node in-place.
+            if node.key == self.tail.key:
+                node = self.pop()
+            else:
+                node.prev.next = node.next
+                node.next.prev = node.prev
+
+            # Push node to the front of the queue.
+            self.push(node)
+            return node.value
+        else:
+            raise KeyError("Key not found: %s" % (str(key)))
+
+    def __setitem__(self, key, value):
+        """Map key to value in cache."""
+        if key in self.node_map.keys():
+            self[key]
+            self.head.value = value
+        else:
+            self.push(Node(key, value))
+
+            # If we have exceeded capacity, then we need to evict the entry.
+            if len(self.node_map.keys()) > self.capacity:
+                # Remove the entry from our node map.
+                del self.node_map[self.tail.key]
+                # Evict the least recently used.
+                self.pop()
+
+    def push(self, node):
         """Push entry to the front of the queue."""
-        # Push node onto queue.
-        node = Node(key, value)
         if self.head is None:
-            self.head = node
             self.tail = node
         else:
             node.next = self.head
             self.head.prev = node
         self.head = node
-        # Map key to node to allow constant access.
-        self.node_map[key] = node
 
-    def __pop(self):
+        # Map key to node to allow constant access.
+        self.node_map[node.key] = node
+
+    def pop(self):
         """Pop entry from the back of the queue."""
         if self.head is None:
             raise Exception("Cannot pop empty list!")
-        # Make copy of tail node contents.
-        node = Node(self.tail.key, self.tail.value)
+
+        popped = self.tail
+
         # Delete tail node in-place.
         if self.tail.prev is None:
             self.head = None
@@ -34,39 +68,7 @@ class lru_cache:
             self.tail = self.tail.prev
             self.tail.next = None
 
-        return node
-
-    def __getitem__(self, key):
-        """Get value associated with key if the key exists in the cache."""
-        if key in self.node_map.keys():
-            node = self.node_map[key]
-            if node == self.head:
-                return node.value
-            # Delete node in-place.
-            if node == self.tail:
-                node = self.__pop()
-            else:
-                node.prev.next = node.next
-                node.next.prev = node.prev
-            # Push node to the front of the queue.
-            self.__push(node.key, node.value)
-            return node.value
-        else:
-            raise KeyError()
-
-    def __setitem__(self, key, value):
-        """Map key to value in cache."""
-        if key in self.node_map.keys():
-            self[key]
-            self.head.value = value
-        else:
-            self.__push(key, value)
-            # If we have exceeded capacity, then we need to evict the entry.
-            if len(self.node_map.keys()) > self.capacity:
-                # Evict the least recently used.
-                evicted = self.__pop()
-                # Remove the entry from our node map.
-                del self.node_map[evicted.key]
+        return popped
 
     def __contains__(self, item):
         return item in self.node_map.keys()
@@ -82,7 +84,3 @@ class Node(object):
         self.value = value
         self.prev = None
         self.next = None       
-
-    def __eq__(self, other):
-        return (isinstance(other, self.__class__)
-                and self.__dict__ == other.__dict__)
